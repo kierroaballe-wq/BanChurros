@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banchurros | Crispy Outside, Sweetness Inside! — MarSU Campus Delivery</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for crisp UI icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        churro: {
+                            50: '#FFFBEB',
+                            100: '#FEF3C7',
+                            200: '#FDE68A',
+                            400: '#FBBF24',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            700: '#B45309',
+                        },
+                        cocoa: {
+                            800: '#5C2408',
+                            900: '#451A03',
+                            950: '#2A0F02',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-churro-50 text-cocoa-950 antialiased selection:bg-churro-500 selection:text-white">
+
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-churro-50/90 backdrop-blur-md border-b border-churro-200/70">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <!-- Brand Logo (Navigates to Home) -->
+            <button type="button" onclick="navigateTo('home')" class="flex items-center gap-2.5 group text-left">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-churro-500 to-churro-700 flex items-center justify-center text-white shadow-md shadow-churro-600/20 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-display font-extrabold text-xl tracking-tight text-cocoa-900 block leading-none">Banchurros</span>
+                    <span class="text-[11px] font-medium text-churro-700 tracking-wide">MarSU Boac Campus</span>
+                </div>
+            </button>
+
+            <!-- Desktop Page Navigation Links -->
+            <nav class="hidden md:flex items-center gap-2 text-sm font-semibold text-cocoa-800">
+                <button type="button" data-nav="why" onclick="navigateTo('why')" class="nav-btn px-3.5 py-2 rounded-xl hover:bg-churro-100/80 hover:text-churro-700 transition-colors">Why Banchurros?</button>
+                <button type="button" data-nav="menu" onclick="navigateTo('menu')" class="nav-btn px-3.5 py-2 rounded-xl hover:bg-churro-100/80 hover:text-churro-700 transition-colors">Menu</button>
+                <button type="button" data-nav="delivery" onclick="navigateTo('delivery')" class="nav-btn px-3.5 py-2 rounded-xl hover:bg-churro-100/80 hover:text-churro-700 transition-colors">Campus Delivery</button>
+                <button type="button" data-nav="team" onclick="navigateTo('team')" class="nav-btn px-3.5 py-2 rounded-xl hover:bg-churro-100/80 hover:text-churro-700 transition-colors">Business Minds</button>
+                <button type="button" data-nav="crew" onclick="navigateTo('crew')" class="nav-btn px-3.5 py-2 rounded-xl hover:bg-churro-100/80 hover:text-churro-700 transition-colors inline-flex items-center gap-1.5">
+                    <i class="fa-solid fa-lock text-xs text-churro-600" id="desktop-crew-lock"></i>
+                    <span>Crew Portal</span>
+                </button>
+            </nav>
+
+            <!-- Cart / Order Shortcut Button (Navigates to Delivery/Checkout Page) -->
+            <div class="flex items-center gap-2">
+                <button type="button" onclick="navigateTo('crew')" title="Crew Login / Dashboard" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl bg-churro-100 text-cocoa-900 border border-churro-200">
+                    <i class="fa-solid fa-user-shield text-sm"></i>
+                </button>
+                <button type="button" onclick="navigateTo('delivery')" class="relative inline-flex items-center gap-2 bg-cocoa-900 hover:bg-cocoa-800 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-all active:scale-95">
+                    <i class="fa-solid fa-bag-shopping text-churro-400"></i>
+                    <span>My Order</span>
+                    <span id="nav-cart-badge" class="bg-churro-500 text-cocoa-950 text-xs font-extrabold px-2 py-0.5 rounded-full">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Page Switcher Strip -->
+        <div class="md:hidden border-t border-churro-200/60 bg-churro-50/95 px-2 py-1.5 flex items-center justify-around gap-1 overflow-x-auto text-xs font-semibold text-cocoa-800">
+            <button type="button" data-nav="home" onclick="navigateTo('home')" class="nav-btn px-2.5 py-1.5 rounded-lg whitespace-nowrap">Home</button>
+            <button type="button" data-nav="why" onclick="navigateTo('why')" class="nav-btn px-2.5 py-1.5 rounded-lg whitespace-nowrap">Why Us?</button>
+            <button type="button" data-nav="menu" onclick="navigateTo('menu')" class="nav-btn px-2.5 py-1.5 rounded-lg whitespace-nowrap">Menu</button>
+            <button type="button" data-nav="delivery" onclick="navigateTo('delivery')" class="nav-btn px-2.5 py-1.5 rounded-lg whitespace-nowrap">Delivery</button>
+            <button type="button" data-nav="team" onclick="navigateTo('team')" class="nav-btn px-2.5 py-1.5 rounded-lg whitespace-nowrap">Team</button>
+            <button type="button" data-nav="crew" onclick="navigateTo('crew')" class="nav-btn px-2.5 py-1.5 rounded-lg whitespace-nowrap">Crew</button>
+        </div>
+    </header>
+
+    <!-- PAGE 1: HOME (Hero Showcase) -->
+    <section id="page-home" class="page-view relative overflow-hidden pt-8 pb-14 sm:pt-14 sm:pb-20 min-h-[calc(100vh-4rem)] flex items-center">
+        <!-- Decorative Background Blobs -->
+        <div class="absolute -top-24 -right-24 w-72 h-72 bg-churro-200/50 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-40 -left-24 w-72 h-72 bg-amber-300/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <!-- Left Copy -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-churro-100 border border-churro-200 text-churro-700 text-xs sm:text-sm font-semibold mb-5">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        Now Delivering Across MarSU Boac Campus!
+                    </div>
+                    
+                    <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl text-cocoa-900 tracking-tight leading-[1.1] mb-4">
+                        Crispy Outside,<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-churro-600 to-amber-500">Sweetness Inside!</span>
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-cocoa-800/85 max-w-2xl mx-auto lg:mx-0 mb-7 leading-relaxed">
+                        Freshly cooked cinnamon-sugar banana churros on a sturdy stick inside a clean <strong class="text-cocoa-900">greaseproof paper box</strong>—delivered straight to your classroom or faculty office during short breaks!
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
+                        <button type="button" onclick="navigateTo('menu')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-churro-600 to-churro-500 hover:from-churro-700 hover:to-churro-600 text-white font-bold text-base px-7 py-4 rounded-2xl shadow-lg shadow-churro-600/25 transition-all active:scale-95">
+                            <span>Order Now — Starts at ₱25</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button type="button" onclick="navigateTo('why')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-churro-100/60 text-cocoa-900 border border-churro-200 font-semibold text-base px-6 py-4 rounded-2xl transition-all">
+                            <i class="fa-solid fa-chart-pie text-churro-600"></i>
+                            <span>See Campus Survey Proof</span>
+                        </button>
+                    </div>
+
+                    <!-- Quick Campus Stats -->
+                    <div class="grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 mt-9 pt-7 border-t border-churro-200/80">
+                        <div>
+                            <p class="font-display font-extrabold text-2xl sm:text-3xl text-cocoa-900">₱25</p>
+                            <p class="text-xs text-cocoa-800/75 font-medium">Student-Friendly</p>
+                        </div>
+                        <div>
+                            <p class="font-display font-extrabold text-2xl sm:text-3xl text-cocoa-900">90%</p>
+                            <p class="text-xs text-cocoa-800/75 font-medium">Price Approval</p>
+                        </div>
+                        <div>
+                            <p class="font-display font-extrabold text-2xl sm:text-3xl text-cocoa-900">0 Min</p>
+                            <p class="text-xs text-cocoa-800/75 font-medium">Canteen Line Wait</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Product Visual Card (Greaseproof Paper Box + Banana Churros Illustration) -->
+                <div class="lg:col-span-5">
+                    <div class="relative bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-cocoa-900/10 border border-churro-200/80 max-w-md mx-auto">
+                        <div class="absolute -top-3.5 right-6 bg-cocoa-900 text-churro-400 text-xs font-bold px-3.5 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
+                            <i class="fa-solid fa-star text-[10px]"></i> #1 Campus Merienda
+                        </div>
+
+                        <!-- Custom Vector Illustration of Banana Churros in Greaseproof Paper Box -->
+                        <div class="aspect-square rounded-2xl bg-gradient-to-b from-churro-100 to-churro-50 flex items-center justify-center p-4 mb-5 relative overflow-hidden">
+                            <svg viewBox="0 0 300 280" class="w-full h-full drop-shadow-md" aria-label="Banchurros served on a stick inside a greaseproof paper box">
+                                <!-- Soft plate shadow -->
+                                <ellipse cx="150" cy="245" rx="95" ry="14" fill="#D97706" opacity="0.14"/>
+                                <!-- Wooden Skewer Stick -->
+                                <rect x="145" y="135" width="10" height="105" rx="5" fill="#E5C09B" stroke="#B08256" stroke-width="2"/>
+                                <!-- Golden Banana Churro Body -->
+                                <rect x="112" y="38" width="76" height="125" rx="34" fill="#D97706" stroke="#92400E" stroke-width="3"/>
+                                <!-- Ridges for crispy churro texture -->
+                                <line x1="128" y1="50" x2="128" y2="148" stroke="#FBBF24" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="143" y1="46" x2="143" y2="152" stroke="#FBBF24" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="158" y1="46" x2="158" y2="152" stroke="#FBBF24" stroke-width="4" stroke-linecap="round"/>
+                                <line x1="172" y1="50" x2="172" y2="148" stroke="#FBBF24" stroke-width="4" stroke-linecap="round"/>
+                                <!-- Sweet Banana Cross-Section Top -->
+                                <ellipse cx="150" cy="48" rx="30" ry="13" fill="#FEF08A" stroke="#CA8A04" stroke-width="2"/>
+                                <circle cx="143" cy="47" r="1.5" fill="#92400E"/>
+                                <circle cx="156" cy="49" r="1.5" fill="#92400E"/>
+                                <circle cx="150" cy="44" r="1.5" fill="#92400E"/>
+                                <!-- Chocolate Drizzle Wave -->
+                                <path d="M114 78 Q128 92 142 78 T170 78 T186 82" fill="none" stroke="#451A03" stroke-width="7" stroke-linecap="round"/>
+                                <path d="M116 98 Q132 110 148 96 T182 100" fill="none" stroke="#451A03" stroke-width="6" stroke-linecap="round"/>
+                                <!-- Greaseproof Paper Box (Back Flap) -->
+                                <polygon points="75,130 225,130 212,148 88,148" fill="#E7E5E4" stroke="#A8A29E" stroke-width="2"/>
+                                <!-- Greaseproof Paper Box (Front Body) -->
+                                <polygon points="75,138 225,138 205,212 95,212" fill="#FAFAF9" stroke="#A8A29E" stroke-width="2.5" stroke-linejoin="round"/>
+                                <!-- Box Brand Label Strip -->
+                                <rect x="103" y="160" width="94" height="26" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.5"/>
+                                <text x="150" y="177" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="11" fill="#451A03">BANCHURROS</text>
+                            </svg>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h2 class="font-display font-bold text-lg text-cocoa-900">Mess-Free Paper Box</h2>
+                                <p class="text-xs text-cocoa-800/75">Zero oil leaks • Fresh & crispy • Room delivery</p>
+                            </div>
+                            <span class="inline-flex items-center gap-1 bg-green-100 text-green-800 text-xs font-bold px-3 py-1.5 rounded-xl">
+                                <i class="fa-solid fa-check"></i> Ready
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 2: WHY BANCHURROS? (Value & Survey Validation Proof) -->
+    <section id="page-why" class="page-view hidden py-12 sm:py-16 bg-white min-h-[calc(100vh-4rem)]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-wider text-churro-600">Validated by MarSU Students & Faculty</span>
+                <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-cocoa-900 mt-1">Why Banchurros?</h2>
+                <p class="text-sm sm:text-base text-cocoa-800/80 mt-2">
+                    We surveyed MarSU students (17–23) and faculty (23–30+) to eliminate greasy street snacks and long canteen queues.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+                <!-- Card 1 -->
+                <div class="bg-churro-50/80 rounded-2xl p-5 border border-churro-200/80 hover:shadow-md transition-shadow">
+                    <div class="w-11 h-11 rounded-xl bg-churro-500/15 text-churro-700 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-base text-cocoa-900 mb-1.5">Mess-Free Paper Box</h3>
+                    <p class="text-xs sm:text-sm text-cocoa-800/80 leading-relaxed">
+                        Served on a sturdy wooden stick inside a clean greaseproof paper box—no sticky fingers or oil stains on uniforms.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-churro-50/80 rounded-2xl p-5 border border-churro-200/80 hover:shadow-md transition-shadow">
+                    <div class="w-11 h-11 rounded-xl bg-churro-500/15 text-churro-700 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-person-running"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-base text-cocoa-900 mb-1.5">Zero Canteen Lines</h3>
+                    <p class="text-xs sm:text-sm text-cocoa-800/80 leading-relaxed">
+                        Stay in your classroom or faculty office to rest or prep for your next lecture—we deliver straight to your room!
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-churro-50/80 rounded-2xl p-5 border border-churro-200/80 hover:shadow-md transition-shadow">
+                    <div class="w-11 h-11 rounded-xl bg-churro-500/15 text-churro-700 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-base text-cocoa-900 mb-1.5">Student-Budget Friendly</h3>
+                    <p class="text-xs sm:text-sm text-cocoa-800/80 leading-relaxed">
+                        Starts at just <strong>₱25.00</strong>—cheaper than heavy canteen meals and healthier than overly salty or processed snacks.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-churro-50/80 rounded-2xl p-5 border border-churro-200/80 hover:shadow-md transition-shadow">
+                    <div class="w-11 h-11 rounded-xl bg-churro-500/15 text-churro-700 flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-base text-cocoa-900 mb-1.5">90% Survey Approval</h3>
+                    <p class="text-xs sm:text-sm text-cocoa-800/80 leading-relaxed">
+                        90% of MarSU respondents rated ₱25 fair/affordable, and <strong>70% requested our signature Chocolate Dip</strong>!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Survey Evidence Breakdown & Next Page CTA -->
+            <div class="bg-churro-50 rounded-3xl p-6 sm:p-8 border border-churro-200 flex flex-col lg:flex-row items-center justify-between gap-6">
+                <div class="space-y-2 text-center lg:text-left">
+                    <span class="inline-block text-xs font-bold uppercase tracking-wider bg-churro-200 text-cocoa-900 px-3 py-1 rounded-full">Survey Validation Summary</span>
+                    <h3 class="font-display font-extrabold text-xl sm:text-2xl text-cocoa-900">100% Positive Purchase Interest on Campus</h3>
+                    <p class="text-sm text-cocoa-800/85 max-w-2xl">
+                        Respondents disliked traditional snacks getting soggy/cold (50%) or greasy while walking (40%). Banchurros solves both with fresh batch cooking and direct classroom delivery.
+                    </p>
+                </div>
+                <button type="button" onclick="navigateTo('menu')" class="shrink-0 bg-cocoa-900 hover:bg-cocoa-800 text-white font-bold text-sm sm:text-base px-6 py-3.5 rounded-2xl shadow-md flex items-center gap-2 transition-all active:scale-95">
+                    <span>Explore the Menu</span>
+                    <i class="fa-solid fa-arrow-right text-churro-400"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 3: MENU -->
+    <section id="page-menu" class="page-view hidden py-12 sm:py-16 min-h-[calc(100vh-4rem)]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-churro-600">Freshly Cooked Per Break</span>
+                    <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-cocoa-900 mt-1">Banchurros Menu</h2>
+                </div>
+                <p class="text-xs sm:text-sm text-cocoa-800/80 bg-churro-100 px-3.5 py-2 rounded-xl border border-churro-200">
+                    <i class="fa-solid fa-circle-info text-churro-700 mr-1"></i> Every order includes a <strong>greaseproof paper box</strong>
+                </p>
+            </div>
+
+            <!-- Menu Items Grid -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- Menu cards are dynamically rendered by JS -->
+            </div>
+
+            <!-- Bottom Proceed to Campus Delivery Bar -->
+            <div class="bg-white rounded-3xl p-5 sm:p-6 border border-churro-200 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-2xl bg-churro-100 text-churro-700 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-semibold text-cocoa-800/70">Current Order Total (<span id="menu-page-count">1</span> item)</p>
+                        <p id="menu-page-total" class="font-display font-extrabold text-2xl text-cocoa-900">₱30.00</p>
+                    </div>
+                </div>
+                <button type="button" onclick="navigateTo('delivery')" class="w-full sm:w-auto bg-gradient-to-r from-churro-600 to-churro-500 hover:from-churro-700 hover:to-churro-600 text-white font-bold text-sm sm:text-base px-7 py-3.5 rounded-2xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-95">
+                    <span>Proceed to Campus Delivery</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 4: CAMPUS DELIVERY & CHECKOUT -->
+    <section id="page-delivery" class="page-view hidden py-12 sm:py-16 min-h-[calc(100vh-4rem)]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="mb-8">
+                <span class="text-xs font-bold uppercase tracking-wider text-churro-600">MarSU Boac Room-to-Room Drop-Off</span>
+                <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-cocoa-900 mt-1">Campus Delivery & Checkout</h2>
+                <p class="text-sm text-cocoa-800/80 mt-1">Stay in your room or faculty office—we bring fresh Banchurros straight to you during break time.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Left: Order Summary Box (5 cols) -->
+                <div class="lg:col-span-5 bg-white rounded-3xl p-6 shadow-md border border-churro-200">
+                    <div class="flex items-center justify-between pb-4 border-b border-churro-100">
+                        <h3 class="font-display font-extrabold text-lg text-cocoa-900 flex items-center gap-2">
+                            <i class="fa-solid fa-receipt text-churro-600"></i>
+                            <span>Order Summary</span>
+                        </h3>
+                        <div class="flex items-center gap-3">
+                            <button type="button" onclick="navigateTo('menu')" class="text-xs font-bold text-churro-700 hover:underline">
+                                + Add More
+                            </button>
+                            <button type="button" onclick="clearCart()" class="text-xs font-semibold text-cocoa-800/60 hover:text-red-600 transition-colors">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cart Summary List -->
+                    <div id="cart-items-container" class="py-4 border-b border-churro-100 space-y-3 max-h-64 overflow-y-auto">
+                        <!-- Dynamically populated -->
+                    </div>
+
+                    <!-- Totals -->
+                    <div class="pt-4 space-y-1.5 text-sm">
+                        <div class="flex justify-between text-cocoa-800/80">
+                            <span>Subtotal (<span id="total-sticks-count">0</span> items)</span>
+                            <span id="subtotal-amount" class="font-semibold">₱0.00</span>
+                        </div>
+                        <div class="flex justify-between text-green-700 font-medium">
+                            <span>MarSU Room-to-Room Delivery</span>
+                            <span>FREE</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-2 text-base sm:text-lg font-display font-extrabold text-cocoa-900">
+                            <span>Total Payable</span>
+                            <span id="total-amount" class="text-churro-700 text-xl">₱0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: MarSU Delivery Form (7 cols) -->
+                <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-cocoa-900/5 border border-churro-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-display font-extrabold text-xl text-cocoa-900">Delivery Details</h3>
+                        <span class="text-[11px] font-bold bg-green-100 text-green-800 px-2.5 py-1 rounded-full">
+                            <i class="fa-solid fa-bolt mr-1"></i>Direct to Crew Queue
+                        </span>
+                    </div>
+
+                    <form id="order-form" class="space-y-4" novalidate>
+                        <!-- Form Validation Error Banner -->
+                        <div id="form-error-banner" class="hidden bg-red-50 border border-red-200 text-red-700 text-xs font-semibold px-3.5 py-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span id="form-error-text">Please fill in all required delivery fields.</span>
+                        </div>
+
+                        <div>
+                            <label for="customer-name" class="block text-xs font-bold text-cocoa-900 mb-1">Full Name *</label>
+                            <input type="text" id="customer-name" placeholder="e.g., Juan Dela Cruz" required
+                                class="w-full px-3.5 py-2.5 text-sm bg-churro-50/60 border border-churro-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-churro-500 focus:bg-white transition-all">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                            <div>
+                                <label for="customer-role" class="block text-xs font-bold text-cocoa-900 mb-1">Campus Role *</label>
+                                <select id="customer-role" required
+                                    class="w-full px-3 py-2.5 text-sm bg-churro-50/60 border border-churro-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-churro-500 focus:bg-white transition-all">
+                                    <option value="MarSU Student (17-23)">MarSU Student (17–23)</option>
+                                    <option value="MarSU Faculty / Staff (23-30+)">MarSU Faculty / Staff</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="delivery-window" class="block text-xs font-bold text-cocoa-900 mb-1">Break Time Window *</label>
+                                <select id="delivery-window" required
+                                    class="w-full px-3 py-2.5 text-sm bg-churro-50/60 border border-churro-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-churro-500 focus:bg-white transition-all">
+                                    <option value="9:00 AM Break">9:00 AM Break</option>
+                                    <option value="10:30 AM Break" selected>10:30 AM Break</option>
+                                    <option value="1:30 PM Break">1:30 PM Break</option>
+                                    <option value="3:00 PM Break">3:00 PM Break</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="delivery-location" class="block text-xs font-bold text-cocoa-900 mb-1">MarSU Campus Building & Drop-off Point *</label>
+                            <select id="delivery-location" required
+                                class="w-full px-3.5 py-2.5 text-sm bg-churro-50/60 border border-churro-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-churro-500 focus:bg-white transition-all">
+                                <option value="">Select building / drop-off point...</option>
+                                <option value="College of Business & Accountancy (CBA) Building">College of Business & Accountancy (CBA) Building</option>
+                                <option value="CBA Faculty Room / Department Office">CBA Faculty Room / Department Office</option>
+                                <option value="College of Engineering Building">College of Engineering Building</option>
+                                <option value="University Library / Study Zone">University Library / Study Zone</option>
+                                <option value="Student Lounge / Canteen Area">Student Lounge / Canteen Area</option>
+                                <option value="MarSU Main Gate">MarSU Main Gate</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="room-details" class="block text-xs font-bold text-cocoa-900 mb-1">Specific Room # or Landmark *</label>
+                            <input type="text" id="room-details" placeholder="e.g., Room 204, 2nd Floor" required
+                                class="w-full px-3.5 py-2.5 text-sm bg-churro-50/60 border border-churro-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-churro-500 focus:bg-white transition-all">
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div>
+                            <span class="block text-xs font-bold text-cocoa-900 mb-1.5">Payment Method *</span>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="payment" value="Cash on Delivery (COD)" checked class="peer sr-only">
+                                    <div class="p-3 rounded-xl border border-churro-200 bg-churro-50/50 peer-checked:border-churro-600 peer-checked:bg-churro-100/80 text-center transition-all">
+                                        <i class="fa-solid fa-money-bill-wave text-churro-700 mr-1"></i>
+                                        <span class="text-xs font-bold text-cocoa-900">Cash (COD)</span>
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="payment" value="GCash" class="peer sr-only">
+                                    <div class="p-3 rounded-xl border border-churro-200 bg-churro-50/50 peer-checked:border-blue-600 peer-checked:bg-blue-50 text-center transition-all">
+                                        <i class="fa-solid fa-mobile-screen-button text-blue-600 mr-1"></i>
+                                        <span class="text-xs font-bold text-cocoa-900">GCash</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="place-order-btn"
+                            class="w-full mt-2 bg-gradient-to-r from-cocoa-900 to-cocoa-800 hover:from-cocoa-800 hover:to-cocoa-900 text-white font-bold text-sm sm:text-base py-4 px-6 rounded-2xl shadow-lg shadow-cocoa-900/20 flex items-center justify-center gap-2 transition-all active:scale-95">
+                            <i class="fa-solid fa-paper-plane text-churro-400"></i>
+                            <span>Place Order & Send to Crew</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 5: BUSINESS MINDS (Team & Venture Overview) -->
+    <section id="page-team" class="page-view hidden bg-cocoa-950 text-churro-100 py-14 sm:py-20 min-h-[calc(100vh-4rem)]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-10 border-b border-cocoa-800">
+                <!-- Brand Info -->
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-churro-500 text-cocoa-950 flex items-center justify-center font-bold text-lg">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <span class="font-display font-extrabold text-2xl text-white">Banchurros</span>
+                    </div>
+                    <p class="text-sm sm:text-base text-churro-200/85 leading-relaxed mb-5">
+                        "Crispy Outside, Sweetness Inside!" — A student-led product management venture by <strong>Business Minds</strong> (BSBA Major in Marketing Management, Section C) at Marinduque State University — Boac Campus.
+                    </p>
+                    <div class="inline-flex items-center gap-2 text-xs font-semibold text-churro-400 bg-cocoa-900 px-3.5 py-2 rounded-xl border border-cocoa-800 mb-5">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Panfilo M. Manguera Sr. Rd., Tanza, Boac, Marinduque</span>
+                    </div>
+                    <div>
+                        <button type="button" onclick="navigateTo('crew')" class="inline-flex items-center gap-2 bg-churro-500 hover:bg-churro-400 text-cocoa-950 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition-all">
+                            <i class="fa-solid fa-user-shield"></i>
+                            <span>Open Crew Portal (Staff Only)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Team Roster -->
+                <div class="md:col-span-7">
+                    <h2 class="font-display font-extrabold text-xl sm:text-2xl text-white mb-2">
+                        Meet the Team: Business Minds
+                    </h2>
+                    <p class="text-xs sm:text-sm text-churro-200/70 mb-5">College of Business and Accountancy • Product Management Final Pitch</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-cocoa-900/90 border border-cocoa-800 rounded-2xl p-4">
+                            <p class="font-bold text-white text-base">Kimuel Real Aballe</p>
+                            <p class="text-xs text-churro-400 font-medium mt-1">Group Leader (Product Manager) & Sustainability/Metrics Lead</p>
+                        </div>
+                        <div class="bg-cocoa-900/90 border border-cocoa-800 rounded-2xl p-4">
+                            <p class="font-bold text-white text-base">JB Mar Cortez</p>
+                            <p class="text-xs text-churro-400 font-medium mt-1">Go-to-Market (GTM) Lead</p>
+                        </div>
+                        <div class="bg-cocoa-900/90 border border-cocoa-800 rounded-2xl p-4">
+                            <p class="font-bold text-white text-base">Mavrick Bustamante Natal</p>
+                            <p class="text-xs text-churro-400 font-medium mt-1">Customer Researcher</p>
+                        </div>
+                        <div class="bg-cocoa-900/90 border border-cocoa-800 rounded-2xl p-4">
+                            <p class="font-bold text-white text-base">Chielo Mae Matricio Mabalot</p>
+                            <p class="text-xs text-churro-400 font-medium mt-1">Finance Lead</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-churro-200/60 gap-3">
+                <p>© 2026 Business Minds — MarSU College of Business and Accountancy (Product Management).</p>
+                <div class="flex items-center gap-4">
+                    <button type="button" onclick="navigateTo('crew')" class="text-churro-400 hover:underline font-semibold">
+                        Crew Login
+                    </button>
+                    <button type="button" onclick="navigateTo('home')" class="text-churro-400 hover:underline font-semibold">
+                        ← Back to Home
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 6: CREW PORTAL (Protected Crew Login + Live Order Queue Dashboard) -->
+    <section id="page-crew" class="page-view hidden py-10 sm:py-14 min-h-[calc(100vh-4rem)] bg-churro-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <!-- VIEW A: CREW LOGIN GATE (Shown when NOT logged in) -->
+            <div id="crew-login-view" class="max-w-md mx-auto">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-cocoa-900/10 border border-churro-200">
+                    <div class="w-14 h-14 rounded-2xl bg-cocoa-900 text-churro-400 flex items-center justify-center text-2xl mx-auto mb-4 shadow-md">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div class="text-center mb-6">
+                        <span class="text-xs font-bold uppercase tracking-wider text-churro-600">Business Minds Staff Only</span>
+                        <h2 class="font-display font-extrabold text-2xl text-cocoa-900 mt-1">Crew Portal Login</h2>
+                        <p class="text-xs sm:text-sm text-cocoa-800/75 mt-1">Sign in with your authorized Business Minds crew email & PIN to view and fulfill campus orders.</p>
+                    </div>
+
+                    <!-- Login Error Alert -->
+                    <div id="crew-login-error" class="hidden mb-4 bg-red-50 border border-red-200 text-red-700 text-xs font-semibold px-3.5 py-2.5 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span id="crew-login-error-text">Unauthorized credentials. Only Business Minds crew members can log in.</span>
+                    </div>
+
+                    <form id="crew-login-form" class="space-y-4">
+                        <div>
+                            <label for="crew-email" class="block text-xs font-bold text-cocoa-900 mb-1">Crew Email Address</label>
+                            <input type="email" id="crew-email" placeholder="Enter your crew email" required
+                                class="w-full px-3.5 py-2.5 text-sm bg-churro-50/60 border border-churro-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-churro-500 focus:bg-white">
+                        </div>
+                        <div>
+                            <label for="crew-pin" class="block text-xs font-bold text-cocoa-900 mb-1">Crew Access PIN</label>
+                            <input type="password" id="crew-pin" placeholder="Enter crew PIN" required
+                                class="w-full px-3.5 py-2.5 text-sm bg-churro-50/60 border border-churro-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-churro-500 focus:bg-white">
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-cocoa-900 hover:bg-cocoa-800 text-white font-bold text-sm py-3.5 px-5 rounded-2xl shadow-md flex items-center justify-center gap-2 transition-all active:scale-95">
+                            <i class="fa-solid fa-right-to-bracket text-churro-400"></i>
+                            <span>Unlock Crew Dashboard</span>
+                        </button>
+                    </form>
+
+                    <!-- Pitch / Demo Quick-Fill Helper for Business Minds Members -->
+                    <div class="mt-6 pt-5 border-t border-churro-100">
+                        <p class="text-[11px] font-bold uppercase tracking-wider text-cocoa-800/60 text-center mb-2.5">
+                            Quick Crew Pitch Sign-In (PIN: 2026)
+                        </p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" onclick="fillCrewLogin('kimuelaballe@gmail.com', '2026')"
+                                class="text-left p-2 rounded-xl bg-churro-50 hover:bg-churro-100 border border-churro-200 transition-colors">
+                                <p class="text-xs font-bold text-cocoa-900 truncate">Kimuel Aballe</p>
+                                <p class="text-[10px] text-churro-700 truncate">Product Manager</p>
+                            </button>
+                            <button type="button" onclick="fillCrewLogin('jbcortez575@gmail.com', '2026')"
+                                class="text-left p-2 rounded-xl bg-churro-50 hover:bg-churro-100 border border-churro-200 transition-colors">
+                                <p class="text-xs font-bold text-cocoa-900 truncate">JB Mar Cortez</p>
+                                <p class="text-[10px] text-churro-700 truncate">GTM Lead</p>
+                            </button>
+                            <button type="button" onclick="fillCrewLogin('mavricknatal559@gmail.com', '2026')"
+                                class="text-left p-2 rounded-xl bg-churro-50 hover:bg-churro-100 border border-churro-200 transition-colors">
+                                <p class="text-xs font-bold text-cocoa-900 truncate">Mavrick Natal</p>
+                                <p class="text-[10px] text-churro-700 truncate">Researcher</p>
+                            </button>
+                            <button type="button" onclick="fillCrewLogin('chielomaemabalot@gmail.com', '2026')"
+                                class="text-left p-2 rounded-xl bg-churro-50 hover:bg-churro-100 border border-churro-200 transition-colors">
+                                <p class="text-xs font-bold text-cocoa-900 truncate">Chielo Mabalot</p>
+                                <p class="text-[10px] text-churro-700 truncate">Finance Lead</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW B: AUTHENTICATED CREW DASHBOARD (Hidden until crew logs in) -->
+            <div id="crew-dashboard-view" class="hidden space-y-6">
+                <!-- Top Crew Bar & Sync Status -->
+                <div class="bg-white rounded-3xl p-5 sm:p-6 border border-churro-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="flex flex-wrap items-center gap-2 mb-1">
+                            <span id="sync-status-badge" class="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-800">
+                                <i class="fa-solid fa-laptop"></i>
+                                <span>Live Session Mode Active</span>
+                            </span>
+                            <span class="text-xs font-semibold text-cocoa-800/70">MarSU Boac Campus Dispatch</span>
+                        </div>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-cocoa-900">
+                            Crew Order Dispatch
+                        </h2>
+                        <p class="text-xs sm:text-sm text-cocoa-800/80 mt-0.5">
+                            Logged in as <strong id="logged-in-crew-name" class="text-cocoa-900">Crew Member</strong> • <span id="logged-in-crew-role" class="text-churro-700 font-semibold">Role</span>
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <button type="button" onclick="navigateTo('delivery')"
+                            class="inline-flex items-center gap-1.5 bg-churro-100 hover:bg-churro-200 text-cocoa-900 font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition-colors">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>New Test Order</span>
+                        </button>
+                        <button type="button" onclick="logoutCrew()"
+                            class="inline-flex items-center gap-1.5 bg-cocoa-900 hover:bg-red-700 text-white font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition-colors">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Real-Time KPI Summary Cards (Matches Business Case 38% Margin) -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-churro-200 shadow-xs">
+                        <p class="text-xs font-bold uppercase tracking-wider text-cocoa-800/60">Total Orders</p>
+                        <p id="kpi-total-orders" class="font-display font-extrabold text-2xl sm:text-3xl text-cocoa-900 mt-1">0</p>
+                        <p class="text-[11px] text-cocoa-800/70 mt-1">All campus tickets</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-churro-200 shadow-xs">
+                        <p class="text-xs font-bold uppercase tracking-wider text-amber-600">Active / Pending</p>
+                        <p id="kpi-pending-orders" class="font-display font-extrabold text-2xl sm:text-3xl text-amber-600 mt-1">0</p>
+                        <p class="text-[11px] text-cocoa-800/70 mt-1">Needs prep or delivery</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-churro-200 shadow-xs">
+                        <p class="text-xs font-bold uppercase tracking-wider text-cocoa-800/60">Gross Sales</p>
+                        <p id="kpi-total-revenue" class="font-display font-extrabold text-2xl sm:text-3xl text-cocoa-900 mt-1">₱0.00</p>
+                        <p class="text-[11px] text-cocoa-800/70 mt-1">Total order revenue</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-churro-200 shadow-xs">
+                        <p class="text-xs font-bold uppercase tracking-wider text-green-700">Est. Net Profit (38%)</p>
+                        <p id="kpi-net-profit" class="font-display font-extrabold text-2xl sm:text-3xl text-green-700 mt-1">₱0.00</p>
+                        <p class="text-[11px] text-cocoa-800/70 mt-1">Based on ₱9.50/₱25 margin</p>
+                    </div>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap items-center gap-2 text-xs font-bold">
+                        <button type="button" onclick="setOrderFilter('ALL')" data-filter="ALL" class="order-filter-btn bg-cocoa-900 text-white px-3.5 py-2 rounded-xl">All Orders</button>
+                        <button type="button" onclick="setOrderFilter('Pending')" data-filter="Pending" class="order-filter-btn bg-white text-cocoa-900 border border-churro-200 px-3.5 py-2 rounded-xl">Pending</button>
+                        <button type="button" onclick="setOrderFilter('Preparing')" data-filter="Preparing" class="order-filter-btn bg-white text-cocoa-900 border border-churro-200 px-3.5 py-2 rounded-xl">Preparing</button>
+                        <button type="button" onclick="setOrderFilter('Out for Delivery')" data-filter="Out for Delivery" class="order-filter-btn bg-white text-cocoa-900 border border-churro-200 px-3.5 py-2 rounded-xl">Out for Delivery</button>
+                        <button type="button" onclick="setOrderFilter('Delivered')" data-filter="Delivered" class="order-filter-btn bg-white text-cocoa-900 border border-churro-200 px-3.5 py-2 rounded-xl">Delivered</button>
+                    </div>
+                </div>
+
+                <!-- Live Orders Queue Container -->
+                <div id="crew-orders-list" class="space-y-4">
+                    <!-- Dynamically populated with incoming orders -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Digital Order Receipt / Confirmation Modal -->
+    <div id="receipt-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-cocoa-950/70 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-churro-200 relative animate-[fadeIn_0.2s_ease-out]">
+            <!-- Top Success Icon -->
+            <div class="w-14 h-14 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center text-2xl mx-auto mb-3">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            
+            <div class="text-center mb-5">
+                <span class="text-xs font-bold uppercase tracking-wider text-churro-600">Sent Directly to Crew Queue!</span>
+                <h3 class="font-display font-extrabold text-2xl text-cocoa-900 mt-0.5">Banchurros Ticket</h3>
+                <p class="text-xs text-cocoa-800/75 mt-1">Our crew has received your order for room delivery.</p>
+            </div>
+
+            <!-- Ticket Details Box -->
+            <div class="bg-churro-50 rounded-2xl p-4 border border-dashed border-churro-400 space-y-2.5 text-xs sm:text-sm">
+                <div class="flex justify-between items-center pb-2 border-b border-churro-200">
+                    <span class="text-cocoa-800/75 font-medium">Order ID:</span>
+                    <span id="receipt-order-id" class="font-display font-extrabold text-cocoa-900 bg-churro-200/70 px-2.5 py-0.5 rounded-lg">#BCH-1024</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-cocoa-800/75">Customer:</span>
+                    <span id="receipt-name" class="font-bold text-cocoa-900 text-right"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-cocoa-800/75">Role:</span>
+                    <span id="receipt-role" class="font-medium text-cocoa-900 text-right"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-cocoa-800/75">Drop-off:</span>
+                    <span id="receipt-location" class="font-bold text-cocoa-900 text-right max-w-[60%]"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-cocoa-800/75">Break Window:</span>
+                    <span id="receipt-window" class="font-bold text-churro-700 text-right"></span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-cocoa-800/75">Payment:</span>
+                    <span id="receipt-payment" class="font-semibold text-cocoa-900 text-right"></span>
+                </div>
+
+                <!-- Itemized List -->
+                <div class="pt-2 border-t border-churro-200">
+                    <p class="font-bold text-cocoa-900 mb-1.5">Items Ordered:</p>
+                    <div id="receipt-items" class="space-y-1 text-xs text-cocoa-800"></div>
+                </div>
+
+                <div class="pt-2 border-t border-churro-200 flex justify-between items-center text-base font-display font-extrabold text-cocoa-900">
+                    <span>Total Amount:</span>
+                    <span id="receipt-total" class="text-churro-700"></span>
+                </div>
+            </div>
+
+            <!-- Copy Feedback Notification -->
+            <div id="copy-toast" class="hidden mt-3 text-center text-xs font-bold text-green-700 bg-green-50 border border-green-200 py-2 rounded-xl">
+                <i class="fa-solid fa-check mr-1"></i> Order summary copied! Paste it in Business Minds Messenger.
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <button type="button" onclick="copyOrderForMessenger()"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95">
+                    <i class="fa-brands fa-facebook-messenger text-base"></i>
+                    <span>Copy for Messenger</span>
+                </button>
+                <button type="button" onclick="closeReceiptModal()"
+                    class="w-full bg-cocoa-900 hover:bg-cocoa-800 text-white font-bold text-xs sm:text-sm py-3 px-4 rounded-xl transition-all active:scale-95">
+                    Done
+                </button>
+            </div>
+            <div class="mt-2.5 text-center">
+                <button type="button" onclick="closeReceiptModal(); navigateTo('crew');"
+                    class="text-xs font-bold text-churro-700 hover:underline">
+                    View in Crew Portal →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Synchronous Global Application Script (Guarantees window.navigateTo & all handlers are defined immediately) -->
+    <script>
+        // Authorized Business Minds Crew Roster (from Concept Paper)
+        const CREW_ACCOUNTS = [
+            {
+                email: 'kimuelaballe@gmail.com',
+                pin: '2026',
+                name: 'Kimuel Real Aballe',
+                role: 'Group Leader (Product Manager) & Sustainability Lead'
+            },
+            {
+                email: 'jbcortez575@gmail.com',
+                pin: '2026',
+                name: 'JB Mar Cortez',
+                role: 'Go-to-Market (GTM) Lead'
+            },
+            {
+                email: 'mavricknatal559@gmail.com',
+                pin: '2026',
+                name: 'Mavrick Bustamante Natal',
+                role: 'Customer Researcher'
+            },
+            {
+                email: 'chielomaemabalot@gmail.com',
+                pin: '2026',
+                name: 'Chielo Mae Matricio Mabalot',
+                role: 'Finance Lead'
+            }
+        ];
+
+        // Menu Catalog Data matching Banchurros Marketing Plan & Survey Validation
+        const menuItems = [
+            {
+                id: 'classic',
+                name: 'Classic Cinnamon Sugar Banchurros',
+                price: 25.00,
+                badge: 'Best Value • ₱25',
+                badgeColor: 'bg-churro-100 text-churro-800',
+                description: 'Crispy golden banana churros on a sturdy stick coated in sweet cinnamon sugar, packed in a clean greaseproof paper box.',
+                icon: 'fa-wand-sparkles'
+            },
+            {
+                id: 'choco',
+                name: 'Banchurros with Chocolate Dip',
+                price: 30.00,
+                badge: '70% Survey Choice ★',
+                badgeColor: 'bg-cocoa-900 text-churro-400',
+                description: 'Customer favorite! Crispy cinnamon-sugar banana churros paired with a rich, velvety chocolate dipping sauce cup.',
+                icon: 'fa-heart'
+            },
+            {
+                id: 'caramel',
+                name: 'Banchurros with Caramel Dip',
+                price: 30.00,
+                badge: 'Sweet Add-On',
+                badgeColor: 'bg-amber-100 text-amber-800',
+                description: 'Crispy banana churros on a stick served with smooth, buttery sweet caramel dipping sauce in a greaseproof paper box.',
+                icon: 'fa-droplet'
+            },
+            {
+                id: 'barkada',
+                name: 'Barkada / Study Group Pack',
+                price: 100.00,
+                badge: 'Save ₱10 • 4 Sticks + 2 Dips',
+                badgeColor: 'bg-green-100 text-green-800',
+                description: '4 crispy Banchurros sticks + any 2 dips (Chocolate or Caramel). Perfect for classmates or faculty sharing during break!',
+                icon: 'fa-users'
+            }
+        ];
+
+        // Global Application State
+        let cart = {
+            classic: 0,
+            choco: 1,
+            caramel: 0,
+            barkada: 0
+        };
+
+        let ordersList = [];
+        let activeCrewUser = null;
+        let currentOrderFilter = 'ALL';
+        let lastGeneratedReceiptText = '';
+
+        // Optional Cloud Storage Bridge (populated by Firebase module if available)
+        window.cloudBridge = {
+            saveOrder: null,
+            updateStatus: null,
+            deleteOrder: null
+        };
+
+        window.setOrdersFromCloud = function(fetchedOrders) {
+            ordersList = fetchedOrders;
+            renderCrewDashboard();
+        };
+
+        window.updateSyncBadge = function(cloudReady) {
+            const badge = document.getElementById('sync-status-badge');
+            if (!badge) return;
+            if (cloudReady) {
+                badge.className = 'inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-green-100 text-green-800';
+                badge.innerHTML = '<span class="w-2 h-2 rounded-full bg-green-600 animate-pulse"></span><span>Live Cloud Sync Active</span>';
+            } else {
+                badge.className = 'inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-800';
+                badge.innerHTML = '<i class="fa-solid fa-laptop"></i><span>Live Session Mode Active</span>';
+            }
+        };
+
+        function formatPHP(amount) {
+            return '₱' + Number(amount || 0).toFixed(2);
+        }
+
+        // Single-Page Multi-View Router (Immediately attached to window)
+        window.navigateTo = function(pageId) {
+            const validPages = ['home', 'why', 'menu', 'delivery', 'team', 'crew'];
+            const target = validPages.includes(pageId) ? pageId : 'home';
+
+            document.querySelectorAll('.page-view').forEach(section => {
+                section.classList.add('hidden');
+            });
+            const activeSection = document.getElementById(`page-${target}`);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+            }
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                const isMatch = btn.getAttribute('data-nav') === target;
+                if (isMatch) {
+                    btn.classList.add('bg-churro-200/80', 'text-cocoa-950', 'font-bold');
+                } else {
+                    btn.classList.remove('bg-churro-200/80', 'text-cocoa-950', 'font-bold');
+                }
+            });
+
+            if (target === 'crew') {
+                updateCrewAuthUI();
+                renderCrewDashboard();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // Menu & Cart Functions
+        function renderMenu() {
+            const menuGrid = document.getElementById('menu-grid');
+            if (!menuGrid) return;
+            menuGrid.innerHTML = menuItems.map(item => {
+                const qty = cart[item.id] || 0;
+                return `
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border ${qty > 0 ? 'border-churro-500 ring-2 ring-churro-500/20' : 'border-churro-200/80'} shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-3">
+                                <span class="text-[11px] font-bold px-2.5 py-1 rounded-full ${item.badgeColor}">
+                                    ${item.badge}
+                                </span>
+                                <span class="font-display font-extrabold text-lg text-churro-700">
+                                    ${formatPHP(item.price)}
+                                </span>
+                            </div>
+                            
+                            <h3 class="font-display font-bold text-lg text-cocoa-900 leading-snug mb-2">
+                                ${item.name}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-cocoa-800/80 leading-relaxed mb-5">
+                                ${item.description}
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-churro-100 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-cocoa-800/70">Quantity</span>
+                            <div class="flex items-center gap-2.5 bg-churro-50 p-1 rounded-xl border border-churro-200">
+                                <button type="button" onclick="updateQuantity('${item.id}', -1)" aria-label="Decrease quantity"
+                                    class="w-8 h-8 rounded-lg bg-white hover:bg-churro-100 text-cocoa-900 font-bold flex items-center justify-center shadow-xs transition-colors active:scale-90">
+                                    <i class="fa-solid fa-minus text-xs"></i>
+                                </button>
+                                <span class="w-6 text-center font-display font-extrabold text-sm text-cocoa-900">${qty}</span>
+                                <button type="button" onclick="updateQuantity('${item.id}', 1)" aria-label="Increase quantity"
+                                    class="w-8 h-8 rounded-lg bg-churro-600 hover:bg-churro-700 text-white font-bold flex items-center justify-center shadow-xs transition-colors active:scale-90">
+                                    <i class="fa-solid fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        window.updateQuantity = function(itemId, delta) {
+            const current = cart[itemId] || 0;
+            cart[itemId] = Math.max(0, current + delta);
+            hideFormError();
+            renderMenu();
+            renderCart();
+        };
+
+        window.clearCart = function() {
+            Object.keys(cart).forEach(key => { cart[key] = 0; });
+            renderMenu();
+            renderCart();
+        };
+
+        function renderCart() {
+            const container = document.getElementById('cart-items-container');
+            const badge = document.getElementById('nav-cart-badge');
+            const totalItemsEl = document.getElementById('total-sticks-count');
+            const subtotalEl = document.getElementById('subtotal-amount');
+            const totalEl = document.getElementById('total-amount');
+            const menuPageCountEl = document.getElementById('menu-page-count');
+            const menuPageTotalEl = document.getElementById('menu-page-total');
+
+            let totalCount = 0;
+            let subtotal = 0;
+            const activeItems = [];
+
+            menuItems.forEach(item => {
+                const qty = cart[item.id] || 0;
+                if (qty > 0) {
+                    const lineTotal = qty * item.price;
+                    totalCount += qty;
+                    subtotal += lineTotal;
+                    activeItems.push({ ...item, qty, lineTotal });
+                }
+            });
+
+            if (badge) badge.textContent = totalCount;
+            if (totalItemsEl) totalItemsEl.textContent = totalCount;
+            if (subtotalEl) subtotalEl.textContent = formatPHP(subtotal);
+            if (totalEl) totalEl.textContent = formatPHP(subtotal);
+            if (menuPageCountEl) menuPageCountEl.textContent = totalCount;
+            if (menuPageTotalEl) menuPageTotalEl.textContent = formatPHP(subtotal);
+
+            if (!container) return;
+
+            if (activeItems.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-5 text-cocoa-800/60">
+                        <i class="fa-solid fa-basket-shopping text-2xl mb-1.5 text-churro-400"></i>
+                        <p class="text-xs font-medium">Your order box is empty. Add Banchurros from the menu!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = activeItems.map(item => `
+                <div class="flex items-center justify-between gap-2 text-sm bg-churro-50/70 px-3 py-2 rounded-xl border border-churro-100">
+                    <div class="min-w-0">
+                        <p class="font-bold text-cocoa-900 truncate text-xs sm:text-sm">${item.name}</p>
+                        <p class="text-xs text-cocoa-800/70">${item.qty} × ${formatPHP(item.price)}</p>
+                    </div>
+                    <span class="font-display font-bold text-cocoa-900 shrink-0">${formatPHP(item.lineTotal)}</span>
+                </div>
+            `).join('');
+        }
+
+        function showFormError(message) {
+            const banner = document.getElementById('form-error-banner');
+            const text = document.getElementById('form-error-text');
+            if (text) text.textContent = message;
+            if (banner) banner.classList.remove('hidden');
+        }
+
+        function hideFormError() {
+            const banner = document.getElementById('form-error-banner');
+            if (banner) banner.classList.add('hidden');
+        }
+
+        // Crew Authentication & Dashboard Functions
+        window.fillCrewLogin = function(email, pin) {
+            const emailEl = document.getElementById('crew-email');
+            const pinEl = document.getElementById('crew-pin');
+            const errEl = document.getElementById('crew-login-error');
+            if (emailEl) emailEl.value = email;
+            if (pinEl) pinEl.value = pin;
+            if (errEl) errEl.classList.add('hidden');
+        };
+
+        window.logoutCrew = function() {
+            activeCrewUser = null;
+            const form = document.getElementById('crew-login-form');
+            if (form) form.reset();
+            updateCrewAuthUI();
+        };
+
+        function updateCrewAuthUI() {
+            const loginView = document.getElementById('crew-login-view');
+            const dashView = document.getElementById('crew-dashboard-view');
+            const lockIcon = document.getElementById('desktop-crew-lock');
+
+            if (!loginView || !dashView) return;
+
+            if (activeCrewUser) {
+                loginView.classList.add('hidden');
+                dashView.classList.remove('hidden');
+                const nameEl = document.getElementById('logged-in-crew-name');
+                const roleEl = document.getElementById('logged-in-crew-role');
+                if (nameEl) nameEl.textContent = activeCrewUser.name;
+                if (roleEl) roleEl.textContent = activeCrewUser.role;
+                if (lockIcon) lockIcon.className = 'fa-solid fa-lock-open text-xs text-green-600';
+            } else {
+                loginView.classList.remove('hidden');
+                dashView.classList.add('hidden');
+                if (lockIcon) lockIcon.className = 'fa-solid fa-lock text-xs text-churro-600';
+            }
+        }
+
+        window.setOrderFilter = function(filterValue) {
+            currentOrderFilter = filterValue;
+            document.querySelectorAll('.order-filter-btn').forEach(btn => {
+                if (btn.getAttribute('data-filter') === filterValue) {
+                    btn.className = 'order-filter-btn bg-cocoa-900 text-white px-3.5 py-2 rounded-xl';
+                } else {
+                    btn.className = 'order-filter-btn bg-white text-cocoa-900 border border-churro-200 px-3.5 py-2 rounded-xl hover:bg-churro-100/60';
+                }
+            });
+            renderCrewDashboard();
+        };
+
+        window.updateOrderStatus = async function(orderId, newStatus) {
+            const target = ordersList.find(o => o.id === orderId);
+            if (target) {
+                target.status = newStatus;
+                renderCrewDashboard();
+            }
+            if (typeof window.cloudBridge.updateStatus === 'function') {
+                await window.cloudBridge.updateStatus(orderId, newStatus);
+            }
+        };
+
+        window.deleteOrderRecord = async function(orderId) {
+            ordersList = ordersList.filter(o => o.id !== orderId);
+            renderCrewDashboard();
+            if (typeof window.cloudBridge.deleteOrder === 'function') {
+                await window.cloudBridge.deleteOrder(orderId);
+            }
+        };
+
+        function renderCrewDashboard() {
+            const totalOrdersEl = document.getElementById('kpi-total-orders');
+            const pendingOrdersEl = document.getElementById('kpi-pending-orders');
+            const revenueEl = document.getElementById('kpi-total-revenue');
+            const profitEl = document.getElementById('kpi-net-profit');
+            const listContainer = document.getElementById('crew-orders-list');
+
+            if (!listContainer) return;
+
+            const totalOrders = ordersList.length;
+            const pendingCount = ordersList.filter(o => o.status !== 'Delivered').length;
+            const grossRevenue = ordersList.reduce((sum, o) => sum + (Number(o.totalAmount) || 0), 0);
+            const estimatedProfit = grossRevenue * 0.38;
+
+            if (totalOrdersEl) totalOrdersEl.textContent = totalOrders;
+            if (pendingOrdersEl) pendingOrdersEl.textContent = pendingCount;
+            if (revenueEl) revenueEl.textContent = formatPHP(grossRevenue);
+            if (profitEl) profitEl.textContent = formatPHP(estimatedProfit);
+
+            const filteredOrders = currentOrderFilter === 'ALL'
+                ? ordersList
+                : ordersList.filter(o => o.status === currentOrderFilter);
+
+            if (filteredOrders.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="bg-white rounded-3xl p-10 text-center border border-churro-200">
+                        <div class="w-12 h-12 rounded-2xl bg-churro-100 text-churro-700 flex items-center justify-center text-xl mx-auto mb-3">
+                            <i class="fa-solid fa-inbox"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-cocoa-900">No Orders in This View</h3>
+                        <p class="text-xs sm:text-sm text-cocoa-800/75 max-w-md mx-auto mt-1">
+                            When students or faculty place an order on the Campus Delivery page, their ticket appears here immediately for your crew to prepare and deliver.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            const statusBadgeStyles = {
+                'Pending': 'bg-amber-100 text-amber-800 border-amber-200',
+                'Preparing': 'bg-blue-100 text-blue-800 border-blue-200',
+                'Out for Delivery': 'bg-purple-100 text-purple-800 border-purple-200',
+                'Delivered': 'bg-green-100 text-green-800 border-green-200'
+            };
+
+            listContainer.innerHTML = filteredOrders.map(order => {
+                const badgeClass = statusBadgeStyles[order.status] || statusBadgeStyles['Pending'];
+                const itemsHtml = (order.items || []).map(item => `
+                    <span class="inline-flex items-center gap-1 bg-churro-50 border border-churro-200 text-cocoa-900 text-xs font-semibold px-2.5 py-1 rounded-lg">
+                        <strong>${item.qty}×</strong> ${item.name}
+                    </span>
+                `).join('');
+
+                return `
+                    <div class="bg-white rounded-3xl p-5 sm:p-6 border border-churro-200 shadow-sm hover:shadow-md transition-all">
+                        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-churro-100">
+                            <div>
+                                <div class="flex flex-wrap items-center gap-2 mb-1">
+                                    <span class="font-display font-extrabold text-sm bg-cocoa-900 text-churro-400 px-2.5 py-0.5 rounded-lg">
+                                        ${order.orderNumber}
+                                    </span>
+                                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full border ${badgeClass}">
+                                        ${order.status}
+                                    </span>
+                                    <span class="text-xs text-cocoa-800/65">
+                                        <i class="fa-regular fa-clock mr-1"></i>${order.timestamp}
+                                    </span>
+                                </div>
+                                <h3 class="font-display font-extrabold text-lg text-cocoa-900">
+                                    ${order.customerName}
+                                    <span class="text-xs font-semibold text-cocoa-800/70 ml-1">(${order.customerRole})</span>
+                                </h3>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <div class="text-left lg:text-right">
+                                    <p class="text-[11px] font-bold uppercase text-cocoa-800/60">${order.paymentMethod}</p>
+                                    <p class="font-display font-extrabold text-xl text-churro-700">${formatPHP(Number(order.totalAmount) || 0)}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 py-4 text-xs sm:text-sm">
+                            <div class="md:col-span-5 space-y-1">
+                                <p class="text-cocoa-800/70 font-semibold">
+                                    <i class="fa-solid fa-location-dot text-churro-600 mr-1.5"></i>Drop-off Location:
+                                </p>
+                                <p class="font-bold text-cocoa-900">${order.location}</p>
+                                <p class="text-xs font-bold text-churro-700">
+                                    <i class="fa-solid fa-bell mr-1"></i>Break Window: ${order.breakWindow}
+                                </p>
+                            </div>
+                            <div class="md:col-span-7">
+                                <p class="text-cocoa-800/70 font-semibold mb-1.5">Ordered Items (Greaseproof Paper Box):</p>
+                                <div class="flex flex-wrap gap-1.5">
+                                    ${itemsHtml}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-churro-100 flex flex-wrap items-center justify-between gap-2">
+                            <div class="flex flex-wrap items-center gap-1.5">
+                                <span class="text-xs font-bold text-cocoa-800/70 mr-1">Update Status:</span>
+                                <button type="button" onclick="updateOrderStatus('${order.id}', 'Preparing')"
+                                    class="text-xs font-bold px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 transition-colors">
+                                    Preparing
+                                </button>
+                                <button type="button" onclick="updateOrderStatus('${order.id}', 'Out for Delivery')"
+                                    class="text-xs font-bold px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 transition-colors">
+                                    Out for Delivery
+                                </button>
+                                <button type="button" onclick="updateOrderStatus('${order.id}', 'Delivered')"
+                                    class="text-xs font-bold px-3 py-1.5 rounded-xl bg-green-50 hover:bg-green-100 text-green-700 border border-green-200 transition-colors">
+                                    ✓ Delivered
+                                </button>
+                            </div>
+
+                            <button type="button" onclick="deleteOrderRecord('${order.id}')" title="Remove order"
+                                class="text-xs font-semibold text-cocoa-800/50 hover:text-red-600 px-2.5 py-1.5 rounded-lg transition-colors">
+                                <i class="fa-solid fa-trash-can mr-1"></i>Remove
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Receipt Modal & Clipboard Helpers
+        window.copyOrderForMessenger = function() {
+            const textarea = document.createElement('textarea');
+            textarea.value = lastGeneratedReceiptText;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                const toast = document.getElementById('copy-toast');
+                if (toast) toast.classList.remove('hidden');
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+            document.body.removeChild(textarea);
+        };
+
+        window.closeReceiptModal = function() {
+            const modal = document.getElementById('receipt-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        };
+
+        // Attach Event Listeners Safely on DOMContentLoaded
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMenu();
+            renderCart();
+            updateCrewAuthUI();
+            renderCrewDashboard();
+
+            // Crew Login Form Submission
+            const crewForm = document.getElementById('crew-login-form');
+            if (crewForm) {
+                crewForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const emailInput = document.getElementById('crew-email').value.trim().toLowerCase();
+                    const pinInput = document.getElementById('crew-pin').value.trim();
+                    const errorBox = document.getElementById('crew-login-error');
+
+                    const matchedCrew = CREW_ACCOUNTS.find(
+                        acc => acc.email.toLowerCase() === emailInput && acc.pin === pinInput
+                    );
+
+                    if (!matchedCrew) {
+                        if (errorBox) errorBox.classList.remove('hidden');
+                        return;
+                    }
+
+                    if (errorBox) errorBox.classList.add('hidden');
+                    activeCrewUser = matchedCrew;
+                    updateCrewAuthUI();
+                    renderCrewDashboard();
+                });
+            }
+
+            // Customer Order Form Submission
+            const orderForm = document.getElementById('order-form');
+            if (orderForm) {
+                orderForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    hideFormError();
+
+                    const orderedItems = [];
+                    let totalAmount = 0;
+                    menuItems.forEach(item => {
+                        const qty = cart[item.id] || 0;
+                        if (qty > 0) {
+                            orderedItems.push({
+                                name: item.name,
+                                qty: qty,
+                                lineTotal: qty * item.price
+                            });
+                            totalAmount += qty * item.price;
+                        }
+                    });
+
+                    if (orderedItems.length === 0) {
+                        showFormError('Please add at least 1 Banchurros item to your order first.');
+                        return;
+                    }
+
+                    const name = document.getElementById('customer-name').value.trim();
+                    const role = document.getElementById('customer-role').value;
+                    const building = document.getElementById('delivery-location').value;
+                    const room = document.getElementById('room-details').value.trim();
+                    const breakWindow = document.getElementById('delivery-window').value;
+                    const paymentInput = document.querySelector('input[name="payment"]:checked');
+                    const payment = paymentInput ? paymentInput.value : 'Cash on Delivery (COD)';
+
+                    if (!name || !building || !room) {
+                        showFormError('Please complete your Name, MarSU Building, and Room #.');
+                        return;
+                    }
+
+                    const randomNum = Math.floor(1000 + Math.random() * 9000);
+                    const docId = `BCH-${randomNum}-${Date.now()}`;
+                    const orderId = `#BCH-${randomNum}`;
+                    const fullLocation = `${building} (${room})`;
+                    const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                    const newOrderRecord = {
+                        id: docId,
+                        orderNumber: orderId,
+                        customerName: name,
+                        customerRole: role,
+                        location: fullLocation,
+                        breakWindow: breakWindow,
+                        paymentMethod: payment,
+                        items: orderedItems,
+                        totalAmount: totalAmount,
+                        status: 'Pending',
+                        timestamp: nowStr,
+                        createdAtMs: Date.now()
+                    };
+
+                    // Dispatch immediately into local order queue & cloud bridge
+                    ordersList.unshift(newOrderRecord);
+                    renderCrewDashboard();
+
+                    if (typeof window.cloudBridge.saveOrder === 'function') {
+                        await window.cloudBridge.saveOrder(newOrderRecord);
+                    }
+
+                    // Populate Receipt Modal
+                    document.getElementById('receipt-order-id').textContent = orderId;
+                    document.getElementById('receipt-name').textContent = name;
+                    document.getElementById('receipt-role').textContent = role;
+                    document.getElementById('receipt-location').textContent = fullLocation;
+                    document.getElementById('receipt-window').textContent = breakWindow;
+                    document.getElementById('receipt-payment').textContent = payment;
+                    document.getElementById('receipt-total').textContent = formatPHP(totalAmount);
+
+                    const receiptItemsEl = document.getElementById('receipt-items');
+                    if (receiptItemsEl) {
+                        receiptItemsEl.innerHTML = orderedItems.map(item => `
+                            <div class="flex justify-between">
+                                <span>${item.qty}x ${item.name}</span>
+                                <span class="font-semibold">${formatPHP(item.lineTotal)}</span>
+                            </div>
+                        `).join('');
+                    }
+
+                    const itemsSummaryText = orderedItems.map(i => `• ${i.qty}x ${i.name} (${formatPHP(i.lineTotal)})`).join('\n');
+                    lastGeneratedReceiptText = 
+`🍌 BANCHURROS CAMPUS ORDER ${orderId}
+Name: ${name} (${role})
+Location: ${fullLocation}
+Break Time: ${breakWindow}
+Payment: ${payment}
+
+Order Details:
+${itemsSummaryText}
+
+Total: ${formatPHP(totalAmount)}
+(Packed in Greaseproof Paper Box)`;
+
+                    const copyToast = document.getElementById('copy-toast');
+                    if (copyToast) copyToast.classList.add('hidden');
+
+                    const modal = document.getElementById('receipt-modal');
+                    if (modal) {
+                        modal.classList.remove('hidden');
+                        modal.classList.add('flex');
+                    }
+                });
+            }
+
+            window.navigateTo('home');
+        });
+    </script>
+
+    <!-- Isolated Optional Cloud Persistence Module (Never blocks global UI functions) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, setDoc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        async function connectCloudSync() {
+            try {
+                if (typeof __firebase_config === 'undefined' || !__firebase_config) {
+                    window.updateSyncBadge(false);
+                    return;
+                }
+
+                const firebaseConfig = JSON.parse(__firebase_config);
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'banchurros-marsu-app';
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+                const db = getFirestore(app);
+
+                let user = null;
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    const cred = await signInWithCustomToken(auth, __initial_auth_token);
+                    user = cred.user;
+                } else {
+                    const cred = await signInAnonymously(auth);
+                    user = cred.user;
+                }
+
+                if (!user) return;
+
+                window.updateSyncBadge(true);
+
+                // Wire cloud persistence hooks into global bridge
+                window.cloudBridge.saveOrder = async (orderRecord) => {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'banchurros_orders', orderRecord.id);
+                        await setDoc(docRef, orderRecord);
+                    } catch (err) {
+                        console.error('Cloud save order error:', err);
+                    }
+                };
+
+                window.cloudBridge.updateStatus = async (orderId, newStatus) => {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'banchurros_orders', orderId);
+                        await updateDoc(docRef, { status: newStatus });
+                    } catch (err) {
+                        console.error('Cloud update status error:', err);
+                    }
+                };
+
+                window.cloudBridge.deleteOrder = async (orderId) => {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'banchurros_orders', orderId);
+                        await deleteDoc(docRef);
+                    } catch (err) {
+                        console.error('Cloud delete order error:', err);
+                    }
+                };
+
+                // Listen for real-time order updates across crew devices
+                const ordersCol = collection(db, 'artifacts', appId, 'public', 'data', 'banchurros_orders');
+                onSnapshot(
+                    ordersCol,
+                    (snapshot) => {
+                        const fetched = [];
+                        snapshot.forEach((docSnap) => {
+                            fetched.push({ id: docSnap.id, ...docSnap.data() });
+                        });
+                        fetched.sort((a, b) => (b.createdAtMs || 0) - (a.createdAtMs || 0));
+                        window.setOrdersFromCloud(fetched);
+                    },
+                    (error) => {
+                        console.error('Cloud listener error:', error);
+                        window.updateSyncBadge(false);
+                    }
+                );
+            } catch (err) {
+                console.warn('Running in local session mode:', err);
+                window.updateSyncBadge(false);
+            }
+        }
+
+        connectCloudSync();
+    </script>
+</body>
+</html>
